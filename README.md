@@ -7,20 +7,22 @@ A scalable and modular FastAPI backend template designed to accelerate project d
 
 ## Technology Stack and Features
 
+## Technology Stack and Features
+
 - ⚡ **FastAPI**: A high-performance API framework that allows for rapid development of web applications.
--  🧰 **SQLAlchemy**: A powerful ORM for seamless database interactions, simplifying database operations in Python.
-- **Alembic**: Simplified database migrations to manage schema changes effectively.
--  🔑 **JWT Authentication**: Secure user authentication via JSON Web Tokens, ensuring safe access to resources.
--  🔍 **Pydantic**: Flexible data validation and settings management for robust data handling.
-- **Environment Configuration**: Easy configuration with `.env` files for managing environment variables.
-- **Dependency Injection**: Modular and clean code with FastAPI’s dependency injection system.
-- **CORS Support**: Configurable Cross-Origin Resource Sharing to manage cross-origin requests.
--  🔒 **Password Hashing**: Secure password handling with Passlib for user authentication.
-- **Logging**: Comprehensive logging setup for better observability and debugging.
-- 🐋 [Docker Compose](https://www.docker.com) for development and production.
-- ✅ Tests with [Pytest](https://pytest.org).
-- **Code Linting**: Integrated with `ruff` for enforcing Python code style, catching potential errors, and maintaining a
-  consistent codebase.
+- 🧰 **SQLAlchemy**: A powerful ORM for seamless database interactions, simplifying database operations in Python.
+- 🔄 **Alembic**: Simplified database migrations to manage schema changes effectively.
+- 🔑 **JWT Authentication**: Secure user authentication via JSON Web Tokens, ensuring safe access to resources.
+- 🔍 **Pydantic**: Flexible data validation and settings management for robust data handling.
+- 🛠️ **Environment Configuration**: Easy configuration with `.env` files for managing environment variables.
+- 📦 **Dependency Injection**: Modular and clean code with FastAPI’s dependency injection system.
+- 🌐 **CORS Support**: Configurable Cross-Origin Resource Sharing to manage cross-origin requests.
+- 🔒 **Password Hashing**: Secure password handling with Passlib for user authentication.
+- 📝 **Logging**: Comprehensive logging setup for better observability and debugging.
+- 🐋 **Docker Compose**: Simplifies development and production environments using containerization.
+- ✅ **Tests with Pytest**: An efficient testing framework for ensuring code reliability.
+- ✨ **Code Linting**: Integrated with `ruff` for enforcing Python code style, catching potential errors, and maintaining a consistent codebase.
+- 🚦 **Pre-commit Hooks**: Automated checks with `pre-commit` to run `ruff`, enforce coding standards, and format code before commits, ensuring a clean and consistent codebase.
 
 ---
 
@@ -31,9 +33,11 @@ FastAPIBackendTemplate/
 ├── alembic.ini              # Alembic configuration for database migrations
 ├── docker-compose.yml       # Docker Compose setup for containerized environments
 ├── Dockerfile               # Dockerfile for containerizing the application
+├── .dockerignore            # Dockerignore file for ignoring certain files while creating docker image
 ├── poetry.lock              # Dependency lock file
 ├── pyproject.toml           # Project metadata and dependencies
 ├── pytest.ini               # Pytest configuration
+├── .pre-commit-config.yaml  # Pre-commit hooks configuration
 ├── .env.template            # Environment variable template
 ├── .gitignore               # Git ignored files configuration
 ├── app/                     # Main application folder
