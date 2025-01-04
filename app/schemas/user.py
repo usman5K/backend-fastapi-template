@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from pydantic import BaseModel, EmailStr, Field, field_validator, ConfigDict
+from pydantic import BaseModel, EmailStr, Field, ConfigDict, model_validator
 
 
 class UserBase(BaseModel):
@@ -28,15 +28,17 @@ class UpdatePassword(BaseModel):
     current_password: str = Field(min_length=8, max_length=40)
     new_password: str = Field(min_length=8, max_length=40)
 
-    @classmethod
-    @field_validator("new_password")
-    def validate_passwords(cls, new_password, values):
-        # Check if old_password exists and is not the same as new_password
-        old_password = values.get("old_password")
-        if old_password and new_password and old_password == new_password:
-            raise ValueError("New password must not be the same as the old password.")
+    @model_validator(mode="before")
+    def validate_passwords(self):
+        # Check if current_password is not the same as new_password
+        current_password = self.get("current_password")
+        new_password = self.get("new_password")
+        if current_password and new_password and current_password == new_password:
+            raise ValueError(
+                "New password must not be the same as the current password."
+            )
 
-        return new_password
+        return self
 
 
 class UserPublic(UserBase):

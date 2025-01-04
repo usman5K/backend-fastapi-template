@@ -1,7 +1,7 @@
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status, Depends, HTTPException
 
 from app.api.deps import get_current_user, SessionDep
-from app.core.security import get_password_hash
+from app.core.security import get_password_hash, verify_password
 from app.models.user import User
 from app.schemas.user import UpdateMe, UserPublic, UpdatePassword
 
@@ -36,6 +36,12 @@ async def reset_password(
     user_in: UpdatePassword,
     current_user: User = Depends(get_current_user),
 ) -> UserPublic:
+    if not verify_password(user_in.current_password, str(current_user.hashed_password)):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Current password is incorrect",
+        )
+
     hashed_password = get_password_hash(user_in.new_password)
     current_user.hashed_password = hashed_password
     session.commit()
