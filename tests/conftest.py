@@ -39,7 +39,7 @@ def db_engine():
         command.upgrade(alembic_cfg, "head")
 
     yield engine
-    Base.metadata.drop_all(bind=engine)
+    Base.metadata.drop_all(bind=engine)  # noqa
     drop_database(database_url)
 
 

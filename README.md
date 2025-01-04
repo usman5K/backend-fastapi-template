@@ -257,4 +257,4 @@ For any inquiries, feel free to contact:
 **Usman Khan**  
 Email: [work.usmankhan@gmail.com](mailto:work.usmankhan@gmail.com)
 
-You can also connect with me on [LinkedIn](www.linkedin.com/in/usmankhan43).
+You can also connect with me on [LinkedIn](https://www.linkedin.com/in/usmankhan43).

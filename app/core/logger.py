@@ -16,7 +16,9 @@ class JSONExtraFormatter(logging.Formatter):
         # Combine all `extra` keys and values into a JSON string
         extra_keys = (
             set(record.__dict__.keys())
-            - logging.LogRecord("", "", "", "", "", "", "", "").__dict__.keys()
+            - logging.LogRecord(
+                "", logging.NOTSET, "", 0, "", (), None, ""
+            ).__dict__.keys()
         )
         extra_data = {key: record.__dict__[key] for key in extra_keys}
         record.extra_json = json.dumps(extra_data, separators=(",", ":"))
