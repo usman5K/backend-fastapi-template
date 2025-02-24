@@ -3,7 +3,7 @@ from typing import Annotated
 import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from jwt import ExpiredSignatureError, InvalidSignatureError
+from jwt import ExpiredSignatureError, InvalidSignatureError, DecodeError
 from pydantic import ValidationError
 from sqlalchemy.orm import Session
 
@@ -41,7 +41,12 @@ def get_current_user(
 
         token_data = TokenPayload(**payload)
 
-    except (ExpiredSignatureError, InvalidSignatureError, ValidationError) as e:
+    except (
+        ExpiredSignatureError,
+        InvalidSignatureError,
+        ValidationError,
+        DecodeError,
+    ) as e:
         logger.error(f"Token validation error: {e}")
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
